@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">ChessTimer</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">ChessTimer</string>
+    
+    <string name="first_player">Player 1</string>
+    <string name="second_player">Player 2</string>
+    
+    <string name="default_time">00:00:00.000</string>
+
+</resources>

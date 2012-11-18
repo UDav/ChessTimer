@@ -10,20 +10,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.3" >
-
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/first_player" />
-
+            android:text="@string/first_player"
+            android:textSize="15pt"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/second_player" />
+            android:text="@string/second_player"
+            android:textSize="15pt"
+            android:textStyle="bold" />
 
     </TableRow>
 
@@ -32,20 +36,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.3" >
-
+
         <TextView
             android:id="@+id/tvFirstPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/default_time" />
-
+            android:text="@string/default_time"
+            android:textSize="8pt" />
+
         <TextView
             android:id="@+id/tvSecondPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="00:00:00.000" />
+            android:text="00:00:00.000"
+            android:textSize="8pt" />
 
     </TableRow>
 

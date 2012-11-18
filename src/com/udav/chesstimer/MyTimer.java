@@ -1,12 +1,14 @@
 package com.udav.chesstimer;
 
+import android.content.Context;
+import android.content.Intent;
 import android.widget.TextView;
 
 public class MyTimer implements Runnable {
 	
 	private TextView tv;
 	private boolean stoped = false;
-	private long milisecond = 10000;
+	private long miliseconds = 10000;
 	
 	public MyTimer(TextView tv) {
 		this.tv = tv;
@@ -14,8 +16,8 @@ public class MyTimer implements Runnable {
 	
 	@Override
 	public void run() {
-		while (!stoped) {
-			milisecond -= 100;
+		while (!stoped && miliseconds > 0) {
+			miliseconds -= 100;
 			tv.post(new Runnable() {
 				public void run() {
 					tv.setText(milisecondToTime());
@@ -28,15 +30,31 @@ public class MyTimer implements Runnable {
 				e.printStackTrace();
 			}
 		}
+		if (miliseconds == 0) {
+			Intent intent = new Intent();
+			Context context = tv.getContext();
+			intent.setClass(context, EndActivity.class);
+			context.startActivity(intent);
+		}
 	}
 	
 	private String milisecondToTime() {
-		long second = milisecond/1000;
+		long second = miliseconds/1000;
+		long showMiliseconds = miliseconds % 1000;
 		long min = second/60;
 		second %= 60;
 		long hour = min/60;
 		min %=60; 
-		return hour+":"+min+":"+second;
+		
+		String resultStr = (String)((hour<10?"0"+hour:hour)+":"+
+				(min<10?"0"+min:min)+":"+
+				(second<10?"0"+second:second)+"."+//showMiliseconds;
+				(showMiliseconds<10?"00"+showMiliseconds:showMiliseconds));
+		return resultStr;
+	}
+	
+	public void setTime(long ms) {
+		miliseconds = ms;
 	}
 	
 	public void start(){

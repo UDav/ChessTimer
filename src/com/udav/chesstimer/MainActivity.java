@@ -2,7 +2,9 @@ package com.udav.chesstimer;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -39,6 +41,22 @@ public class MainActivity extends Activity implements OnClickListener {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.menu_settings :
+				Intent intent = new Intent();
+				intent.setClass(this, SettingsActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.menu_exit :
+				System.exit(0);
+				break;
+			
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
 	@Override
 	public void onClick(View v) {

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,13 +19,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	private TextView tvFirstPlayer;
 	private TextView tvSecondPlayer;
 	
-	private Thread th1, th2;
 	private MyTimer firstTimer, secondTimer;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         
         buttonFirstPlayer = (Button)findViewById(R.id.buttonFirstPlayer);
         buttonSecondPlayer = (Button)findViewById(R.id.buttonSecondPlayer);
@@ -69,16 +71,11 @@ public class MainActivity extends Activity implements OnClickListener {
 				
 				if (firstTimer == null) {
 					firstTimer = new MyTimer(tvSecondPlayer);
-					firstTimer.start();
-					th1 = new Thread(firstTimer);
-					th1.start();
-				}
-				
-				if (th1.getState() == Thread.State.TERMINATED) {
-					firstTimer.start();
-					th1 = new Thread(firstTimer);
-					th1.start();
-				}
+					//firstTimer.setTime(10000);
+				}else
+					if (!firstTimer.getEnd()){
+						firstTimer.proceed();
+					} else buttonSecondPlayer.setEnabled(false);
 				
 				break;
 			case R.id.buttonSecondPlayer:
@@ -90,16 +87,12 @@ public class MainActivity extends Activity implements OnClickListener {
 				
 				if (secondTimer == null) {
 					secondTimer = new MyTimer(tvFirstPlayer);
-					secondTimer.start();
-					th2 = new Thread(secondTimer);
-					th2.start();
-				}
-				
-				if (th2.getState() == Thread.State.TERMINATED) {
-					secondTimer.start();
-					th2 = new Thread(secondTimer);
-					th2.start();
-				}
+					//secondTimer.setTime(10000);
+				}else
+					if (!secondTimer.getEnd()) {
+						secondTimer.proceed();
+					} else buttonFirstPlayer.setEnabled(false);
+						
 				
 				break;
 		}

@@ -1,43 +1,24 @@
 package com.udav.chesstimer;
 
-import android.content.Context;
-import android.content.Intent;
+import android.os.CountDownTimer;
 import android.widget.TextView;
 
-public class MyTimer implements Runnable {
-	
+public class MyTimer {
+	private final int INTERVAL = 100;
 	private TextView tv;
-	private boolean stoped = false;
-	private long miliseconds = 10000;
+	private long miliseconds = 100000;
+	private CountDownTimer timer;
+	private boolean end = false;
 	
-	public MyTimer(TextView tv) {
-		this.tv = tv;
+	public MyTimer(TextView tv1) {
+		this.tv = tv1;
+		timer = createTimer().start();
 	}
 	
-	@Override
-	public void run() {
-		while (!stoped && miliseconds > 0) {
-			miliseconds -= 100;
-			tv.post(new Runnable() {
-				public void run() {
-					tv.setText(milisecondToTime());
-				}
-			});
-			
-			try {
-				Thread.sleep(100);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		if (miliseconds == 0) {
-			Intent intent = new Intent();
-			Context context = tv.getContext();
-			intent.setClass(context, EndActivity.class);
-			context.startActivity(intent);
-		}
-	}
-	
+	/**
+	 * Convert milliseconds to string hh:mm:ss.ms
+	 * @return
+	 */
 	private String milisecondToTime() {
 		long second = miliseconds/1000;
 		long showMiliseconds = miliseconds % 1000;
@@ -48,8 +29,8 @@ public class MyTimer implements Runnable {
 		
 		String resultStr = (String)((hour<10?"0"+hour:hour)+":"+
 				(min<10?"0"+min:min)+":"+
-				(second<10?"0"+second:second)+"."+//showMiliseconds;
-				(showMiliseconds<10?"00"+showMiliseconds:showMiliseconds));
+				(second<10?"0"+second:second)+"."+
+				(showMiliseconds/100));
 		return resultStr;
 	}
 	
@@ -57,12 +38,35 @@ public class MyTimer implements Runnable {
 		miliseconds = ms;
 	}
 	
-	public void start(){
-		stoped = false;
+	public void proceed(){
+		timer = createTimer().start();
 	}
 	
 	public void stop(){
-		stoped = true;
+		if (timer != null){
+			timer.cancel();
+			timer = null;
+		}
+	}
+	
+	public boolean getEnd() {
+		return end;
+	}
+	
+	private CountDownTimer createTimer() {
+		return new CountDownTimer(miliseconds, INTERVAL) {
+			@Override
+			public void onTick(long millisUntilFinished) {
+				miliseconds = millisUntilFinished;
+				tv.setText(milisecondToTime());
+			}
+			
+			@Override
+			public void onFinish() {
+				end = true;
+				tv.setText("Player lose!");
+			}
+		};
 	}
 
 }

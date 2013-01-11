@@ -21,7 +21,32 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	private MyTimer firstTimer, secondTimer;
 	
+	private long gameTime = 0;
+	
+	public static final int SET_TIME_ID = 1;
+	public static final String SET_TIME_KEY = "set_time"; // для заворачивания/разворачивания intentoв	
+	
+	
     @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == RESULT_CANCELED)
+			return;
+		
+		if (resultCode == RESULT_OK) {
+			switch (requestCode) {
+			case SET_TIME_ID:
+				Bundle extras = data.getExtras();
+				gameTime = extras.getLong(SET_TIME_KEY);// забираем значение из SettingsActivity
+				break;
+			default:
+				break;
+			}
+		}
+		
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -50,7 +75,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			case R.id.menu_settings :
 				Intent intent = new Intent();
 				intent.setClass(this, SettingsActivity.class);
-				startActivity(intent);
+				startActivityForResult(intent, SET_TIME_ID);
 				break;
 			case R.id.menu_exit :
 				System.exit(0);
@@ -64,38 +89,35 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.buttonFirstPlayer:
-				System.out.println("first");
 				buttonFirstPlayer.setEnabled(false);
 				buttonSecondPlayer.setEnabled(true);
 				if (secondTimer != null) secondTimer.stop();
 				
 				if (firstTimer == null) {
-					firstTimer = new MyTimer(tvSecondPlayer);
-					//firstTimer.setTime(10000);
+					firstTimer = new MyTimer(tvSecondPlayer, gameTime, "Player 2", getApplicationContext());
 				}else
 					if (!firstTimer.getEnd()){
-						firstTimer.proceed();
+						if (secondTimer != null) firstTimer.proceed(secondTimer.getTime());
+						else firstTimer.proceed(gameTime);
 					} else buttonSecondPlayer.setEnabled(false);
 				
 				break;
 			case R.id.buttonSecondPlayer:
-				System.out.println("second");
 				buttonFirstPlayer.setEnabled(true);
 				buttonSecondPlayer.setEnabled(false);
 				
 				if (firstTimer != null) firstTimer.stop();
 				
 				if (secondTimer == null) {
-					secondTimer = new MyTimer(tvFirstPlayer);
-					//secondTimer.setTime(10000);
+					secondTimer = new MyTimer(tvFirstPlayer, gameTime, "Player 1", getApplicationContext());
 				}else
 					if (!secondTimer.getEnd()) {
-						secondTimer.proceed();
+						if (firstTimer != null) secondTimer.proceed(firstTimer.getTime());
+						else secondTimer.proceed(gameTime);
 					} else buttonFirstPlayer.setEnabled(false);
 						
 				
 				break;
 		}
-		
 	}
 }

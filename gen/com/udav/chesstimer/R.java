@@ -15,21 +15,25 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int TableLayout1=0x7f070001;
-        public static final int buttonFirstPlayer=0x7f070009;
-        public static final int buttonSave=0x7f07000c;
-        public static final int buttonSecondPlayer=0x7f07000a;
-        public static final int editTextSetTime=0x7f07000b;
-        public static final int menu_exit=0x7f07000e;
-        public static final int menu_settings=0x7f07000d;
+        public static final int TableLayout1=0x7f070002;
+        public static final int buttonAgain=0x7f070001;
+        public static final int buttonCancel=0x7f070010;
+        public static final int buttonFirstPlayer=0x7f07000a;
+        public static final int buttonSave=0x7f07000f;
+        public static final int buttonSecondPlayer=0x7f07000b;
+        public static final int hourSpinner=0x7f07000c;
+        public static final int menu_exit=0x7f070012;
+        public static final int menu_settings=0x7f070011;
+        public static final int minSpinner=0x7f07000d;
         public static final int result=0x7f070000;
-        public static final int tableRow1=0x7f070002;
-        public static final int tableRow2=0x7f070005;
-        public static final int tableRow3=0x7f070008;
-        public static final int textView1=0x7f070003;
-        public static final int textView2=0x7f070004;
-        public static final int tvFirstPlayer=0x7f070006;
-        public static final int tvSecondPlayer=0x7f070007;
+        public static final int secSpinner=0x7f07000e;
+        public static final int tableRow1=0x7f070003;
+        public static final int tableRow2=0x7f070006;
+        public static final int tableRow3=0x7f070009;
+        public static final int textView1=0x7f070004;
+        public static final int textView2=0x7f070005;
+        public static final int tvFirstPlayer=0x7f070007;
+        public static final int tvSecondPlayer=0x7f070008;
     }
     public static final class layout {
         public static final int activity_end=0x7f030000;
@@ -43,13 +47,12 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int default_time=0x7f040007;
-        public static final int end_game_msg=0x7f04000a;
+        public static final int end_game_msg=0x7f040009;
         public static final int first_player=0x7f040005;
-        public static final int hello_world=0x7f040008;
         public static final int menu_exit=0x7f040004;
         public static final int menu_settings=0x7f040003;
         public static final int second_player=0x7f040006;
-        public static final int title_activity_end=0x7f040009;
+        public static final int title_activity_end=0x7f040008;
         public static final int title_activity_main=0x7f040001;
         public static final int title_activity_settings=0x7f040002;
     }

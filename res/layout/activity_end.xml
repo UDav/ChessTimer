@@ -10,6 +10,16 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/end_game_msg"
+        android:textSize="15sp"
         tools:context=".EndActivity" />
+
+    <Button
+        android:id="@+id/buttonAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/result"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Start again" />
 
 </RelativeLayout>

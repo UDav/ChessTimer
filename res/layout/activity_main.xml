@@ -4,13 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.3" >
-
+
+
+
+
+
+
+
+
+
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
@@ -19,7 +29,11 @@
             android:text="@string/first_player"
             android:textSize="15pt"
             android:textStyle="bold" />
-
+
+
+
+
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -30,13 +44,19 @@
             android:textStyle="bold" />
 
     </TableRow>
-
+
+
     <TableRow
         android:id="@+id/tableRow2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.3" >
-
+
+
+
+
+
+
         <TextView
             android:id="@+id/tvFirstPlayer"
             android:layout_width="wrap_content"
@@ -44,30 +64,46 @@
             android:layout_weight="0.5"
             android:text="@string/default_time"
             android:textSize="8pt" />
-
+
+
+
+
+
+
+
+
         <TextView
             android:id="@+id/tvSecondPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="00:00:00.000"
+            android:text="@string/default_time"
             android:textSize="8pt" />
 
     </TableRow>
-
+
+
     <TableRow
         android:id="@+id/tableRow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.4" >
-
+
+
+
+
+
         <Button
             android:id="@+id/buttonFirstPlayer"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
             android:text="Stop" />
-
+
+
+
+
+
         <Button
             android:id="@+id/buttonSecondPlayer"
             android:layout_width="wrap_content"

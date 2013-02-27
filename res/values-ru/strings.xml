@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="app_name">ChessTimer</string>
+    <string name="title_activity_main">ChessTimer</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_exit">Выход</string>
+    <string name="first_player">Player 1</string>
+    <string name="second_player">Player 2</string>
+    <string name="default_time">00:00:00.0</string>
+    <string name="title_activity_end">Конец</string>
+    <string name="end_game_msg">Игра завершена!</string>
+    <string name="stop_button">Стоп</string>
+    
+    <!-- Preferences -->
+    <string name="players_name">Имена игроков</string>
+    <string name="player1">Игрок 1</string>
+    <string name="player2">Игрок 2</string>
+    <string name="plDesсr">Введите имя игрока</string>
+    <string name="time">Время на игру</string>
+    <string name="time_descr">Задайте время игры в минутах</string>
+    
+</resources>

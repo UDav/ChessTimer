@@ -82,8 +82,8 @@ public class MyTimer {
 				end = true;
 				//tv.setText(name+" lose!");
 				
-				String text = name+" lose!\nСделано ходов: "+moveCounter+
-				"\nОставшееся время противника "+millisecondToTime(enemyTime);
+				String text = name+" lose!\nРЎРґРµР»Р°РЅРѕ С…РѕРґРѕРІ: "+moveCounter+
+				"\nРћСЃС‚Р°Р»РѕСЃСЊ РІСЂРµРјРµРЅРё Сѓ РїСЂРѕС‚РёРІРЅРёРєР° "+millisecondToTime(enemyTime);
 				Intent intent = new Intent(context, EndActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				Bundle extras = new Bundle();

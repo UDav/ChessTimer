@@ -12,17 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.3" >
 
-
-
-
-
-
-
-
-
-
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/firstPlName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -30,12 +21,8 @@
             android:textSize="15pt"
             android:textStyle="bold" />
 
-
-
-
-
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/secondPlName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -98,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
-            android:text="Stop" />
+            android:text="@string/stop_button" />
 
 
 
@@ -109,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
-            android:text="Stop" />
+            android:text="@string/stop_button" />
 
     </TableRow>
 

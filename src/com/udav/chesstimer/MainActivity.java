@@ -1,11 +1,14 @@
 package com.udav.chesstimer;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,34 +21,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	private TextView tvFirstPlayer;
 	private TextView tvSecondPlayer;
+	private TextView firstPlName, secondPlName;
 	
 	private MyTimer firstTimer, secondTimer;
 	
 	private long gameTime = 0;
 	
-	public static final int SET_TIME_ID = 1;
-	public static final String SET_TIME_KEY = "set_time"; // для заворачивания/разворачивания intentoв	
+	private SharedPreferences sp;
 	
-	
-    @Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == RESULT_CANCELED)
-			return;
-		
-		if (resultCode == RESULT_OK) {
-			switch (requestCode) {
-			case SET_TIME_ID:
-				Bundle extras = data.getExtras();
-				gameTime = extras.getLong(SET_TIME_KEY);// забираем значение из SettingsActivity
-				break;
-			default:
-				break;
-			}
-		}
-		
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,31 +42,39 @@ public class MainActivity extends Activity implements OnClickListener {
         tvFirstPlayer = (TextView)findViewById(R.id.tvFirstPlayer);
         tvSecondPlayer = (TextView)findViewById(R.id.tvSecondPlayer);
         
+        firstPlName = (TextView)findViewById(R.id.firstPlName);
+        secondPlName = (TextView)findViewById(R.id.secondPlName);
+        
         buttonFirstPlayer.setOnClickListener(this);
         buttonSecondPlayer.setOnClickListener(this);
+        
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
+	@Override
+	protected void onResume() {
+		String time = sp.getString("timePref", "20");
+		gameTime = Long.parseLong(time)*60000;
+		
+		firstPlName.setText(sp.getString("pl1", "Player 1"));
+		secondPlName.setText(sp.getString("pl2", "Player 2"));
+		
+		super.onResume();
+	}
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
+        menu.findItem(R.id.menu_settings).setIntent(new Intent(this, PrefActivity.class));
+		menu.findItem(R.id.menu_exit).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				System.exit(0);
+				return false;
+			}
+		});
         return true;
     }
-    
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.menu_settings :
-				Intent intent = new Intent();
-				intent.setClass(this, SettingsActivity.class);
-				startActivityForResult(intent, SET_TIME_ID);
-				break;
-			case R.id.menu_exit :
-				System.exit(0);
-				break;
-			
-		}
-		return super.onOptionsItemSelected(item);
-	}
 
 	@Override
 	public void onClick(View v) {
@@ -115,9 +106,10 @@ public class MainActivity extends Activity implements OnClickListener {
 						if (firstTimer != null) secondTimer.proceed(firstTimer.getTime());
 						else secondTimer.proceed(gameTime);
 					} else buttonFirstPlayer.setEnabled(false);
-						
-				
 				break;
 		}
 	}
+
+	
+	
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+	
+	<PreferenceCategory
+    	android:title = "@string/players_name">
+    	<EditTextPreference 
+        	android:title="@string/player1"
+        	android:key="pl1" 
+        	android:summary="@string/plDesсr"
+        	android:defaultValue="@string/player1">
+    	</EditTextPreference>
+    
+    	<EditTextPreference 
+        	android:title="@string/player2"
+        	android:key="pl2" 
+        	android:summary="@string/plDesсr"
+        	android:defaultValue="@string/player2">
+    	</EditTextPreference>
+	</PreferenceCategory>
+    
+    <EditTextPreference
+        android:title="@string/time"
+        android:key="timePref"
+        android:summary="@string/time_descr"
+        android:defaultValue="20">
+    </EditTextPreference>
+    
+</PreferenceScreen>

@@ -10,5 +10,6 @@
     <string name="default_time">00:00:00.0</string>
     <string name="title_activity_end">EndActivity</string>
     <string name="end_game_msg">Game over!</string>
+    <string name="stop_button">Stop</string>
 
 </resources>

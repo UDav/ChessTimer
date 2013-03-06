@@ -11,5 +11,14 @@
     <string name="title_activity_end">EndActivity</string>
     <string name="end_game_msg">Game over!</string>
     <string name="stop_button">Stop</string>
+    
+    <!-- Preferences -->
+    <string name="players_name">Players names</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="plDesсr">Input player name</string>
+    <string name="timePref">Time settings</string>
+    <string name="time">Time for game</string>
+    <string name="time_descr">Input time for game in minute</string>
 
 </resources>

@@ -80,7 +80,6 @@ public class MyTimer {
 			@Override
 			public void onFinish() {
 				end = true;
-				//tv.setText(name+" lose!");
 				
 				String text = name+" lose!\nСделано ходов: "+moveCounter+
 				"\nОсталось времени у противника "+millisecondToTime(enemyTime);

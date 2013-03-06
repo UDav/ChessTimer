@@ -11,6 +11,7 @@ public class PrefActivity extends PreferenceActivity {
 		getFragmentManager().beginTransaction()
 		.replace(android.R.id.content, new SettingsFragments())
 		.commit();
+		
 	}
 	
 }

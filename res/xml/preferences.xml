@@ -18,11 +18,15 @@
     	</EditTextPreference>
 	</PreferenceCategory>
     
-    <EditTextPreference
-        android:title="@string/time"
-        android:key="timePref"
-        android:summary="@string/time_descr"
-        android:defaultValue="20">
-    </EditTextPreference>
-    
+	<PreferenceCategory
+	    android:title="@string/timePref">
+    	<EditTextPreference
+    	    android:inputType="number"
+        	android:title="@string/time"
+        	android:key="timePref"
+        	android:summary="@string/time_descr"
+        	android:defaultValue="20">
+    	</EditTextPreference>
+    </PreferenceCategory>
+    	
 </PreferenceScreen>

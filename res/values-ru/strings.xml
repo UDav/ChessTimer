@@ -17,6 +17,7 @@
     <string name="player1">Игрок 1</string>
     <string name="player2">Игрок 2</string>
     <string name="plDesсr">Введите имя игрока</string>
+    <string name="timePref">Настройки времени</string>
     <string name="time">Время на игру</string>
     <string name="time_descr">Задайте время игры в минутах</string>
     

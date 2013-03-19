@@ -53,11 +53,20 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		String time = sp.getString("timePref", "20");
+		String time = sp.getString("timePref", "10");
 		gameTime = Long.parseLong(time)*60000;
 		
 		firstPlName.setText(sp.getString("pl1", "Player 1"));
 		secondPlName.setText(sp.getString("pl2", "Player 2"));
+		
+		if (firstTimer != null) firstTimer.stop();
+		if (secondTimer != null) secondTimer.stop();
+		firstTimer = null;
+		secondTimer = null;
+		tvFirstPlayer.setText("00:"+time+":00.0");
+		tvSecondPlayer.setText("00:"+time+":00.0");
+		buttonFirstPlayer.setEnabled(true);
+		buttonSecondPlayer.setEnabled(true);
 		
 		super.onResume();
 	}

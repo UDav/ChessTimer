@@ -19,12 +19,21 @@ public class MyTimer {
 	
 	public static final String TEXT_KEY = "text";
 	
-	public MyTimer(TextView tv1, long gameTime, String name, Context context) {
+	public static final int TIMER_SIMPLE = 0;
+	public static final int TIMER_WITH_DELAY = 1; // delay = 5sec
+	public static final int TIMER_ADAGIO = 2; // if limit not use - return timer state 
+	public static final int TIMER_FISHER = 3; // increse timer on limit value
+	private int typeTimer;
+	
+	private int limit;
+	
+	public MyTimer(TextView tv1, long gameTime, int typeTimer, String playerName, Context context) {
 		this.tv = tv1;
 		milliseconds = gameTime;
-		this.name = name;
+		this.name = playerName;
 		enemyTime = gameTime;
 		this.context = context;
+		this.typeTimer = typeTimer;
 		
 		timer = createTimer().start();
 	}
@@ -50,7 +59,19 @@ public class MyTimer {
 	
 	public void proceed(long enemyTime){
 		this.enemyTime = enemyTime; 
-		timer = createTimer().start();
+		
+		switch (typeTimer) {
+			case TIMER_SIMPLE:
+				timer = createTimer().start();
+				break;
+			case TIMER_WITH_DELAY:
+				break;
+			case TIMER_ADAGIO:
+				break;
+			case TIMER_FISHER:
+				break;
+		}
+		
 	}
 	
 	public void stop(){

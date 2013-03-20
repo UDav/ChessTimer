@@ -45,7 +45,6 @@ public class EndActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onBackPressed() {
-		System.exit(0);
 		super.onBackPressed();
 	}
 

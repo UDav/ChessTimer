@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string-array name="lisrArray">
+	<item>@string/simple_timer</item>
+	<item>@string/timer_with_delay</item>
+	<item>@string/adagio_timer</item>
+	<item>@string/fisher_timer</item>
+</string-array>
+
+<string-array name="listValue">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+</string-array>
+    
+</resources>

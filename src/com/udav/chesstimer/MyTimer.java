@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 public class MyTimer {
 	private final int INTERVAL = 100;
-	private TextView tv;
-	private long milliseconds = 0;
-	private CountDownTimer timer;
+	private TextView tv, subTv;
+	private long milliseconds = 0, oldTime;
+	private CountDownTimer timer, subTimer;
 	private boolean end = false;
 	private String name;
 	private long enemyTime;
@@ -25,17 +25,30 @@ public class MyTimer {
 	public static final int TIMER_FISHER = 3; // increse timer on limit value
 	private int typeTimer;
 	
-	private int limit;
+	private long limit;
+	private final int LIMIT_TIME;
 	
-	public MyTimer(TextView tv1, long gameTime, int typeTimer, String playerName, Context context) {
+	/**
+	 * Create MyTimer
+	 * @param tv1 - main TextView for display time
+	 * @param tv2 - slave TextView for display limit time 
+	 * @param gameTime - set game time
+	 * @param typeTimer - selected timer type
+	 * @param limitTime - set limit time
+	 * @param playerName - set Player name
+	 * @param context - application context
+	 */
+	public MyTimer(TextView tv1, TextView tv2, long gameTime, int typeTimer, int limitTime,String playerName, Context context) {
 		this.tv = tv1;
+		this.subTv = tv2;
 		milliseconds = gameTime;
 		this.name = playerName;
 		enemyTime = gameTime;
 		this.context = context;
 		this.typeTimer = typeTimer;
+		LIMIT_TIME = limitTime*1000;
 		
-		timer = createTimer().start();
+		this.proceed(gameTime);
 	}
 	
 	/**
@@ -59,16 +72,36 @@ public class MyTimer {
 	
 	public void proceed(long enemyTime){
 		this.enemyTime = enemyTime; 
-		
+		limit = LIMIT_TIME;
 		switch (typeTimer) {
 			case TIMER_SIMPLE:
 				timer = createTimer().start();
 				break;
 			case TIMER_WITH_DELAY:
+				//launch subTimer
+				//when subtimer finish - launch main timer
+				subTimer = new CountDownTimer(limit, INTERVAL) {
+					@Override
+					public void onTick(long millisUntilFinished) {
+						limit = millisUntilFinished;
+						subTv.setText(millisecondToTime(limit));
+					}
+					@Override
+					public void onFinish() {
+						subTv.setText("");
+						timer = createTimer().start();	
+					}
+				};
+				subTimer.start();
 				break;
 			case TIMER_ADAGIO:
+				//save current time
+				//launch main timer
+				oldTime = milliseconds;
+				timer = createTimer().start();
 				break;
 			case TIMER_FISHER:
+				timer = createTimer().start();
 				break;
 		}
 		
@@ -79,6 +112,28 @@ public class MyTimer {
 			timer.cancel();
 			timer = null;
 		}
+		subTv.setText("");
+		switch (typeTimer) {
+			case TIMER_SIMPLE:
+				break;
+			case TIMER_WITH_DELAY:
+				if (subTimer != null) {
+					subTimer.cancel();
+					subTimer = null;
+				}
+				break;
+			case TIMER_ADAGIO:
+				if (limit>=0) {
+					milliseconds = oldTime;
+					tv.setText(millisecondToTime(milliseconds));
+				}
+				break;
+			case TIMER_FISHER:
+				//add to milliseconds limit
+				milliseconds += LIMIT_TIME;
+				tv.setText(millisecondToTime(milliseconds));
+				break;
+	}
 	}
 	
 	public boolean getEnd() {
@@ -94,6 +149,11 @@ public class MyTimer {
 		return new CountDownTimer(milliseconds, INTERVAL) {
 			@Override
 			public void onTick(long millisUntilFinished) {
+				if (typeTimer == TIMER_ADAGIO) {
+					// count limit time
+					limit -= INTERVAL;
+					if (limit>=0) subTv.setText(millisecondToTime(limit));
+				}
 				milliseconds = millisUntilFinished;
 				tv.setText(millisecondToTime(milliseconds));
 			}

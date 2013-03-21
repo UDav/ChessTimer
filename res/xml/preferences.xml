@@ -25,8 +25,25 @@
         	android:title="@string/time"
         	android:key="timePref"
         	android:summary="@string/time_descr"
-        	android:defaultValue="20">
+        	android:defaultValue="10">
     	</EditTextPreference>
     </PreferenceCategory>
-    
+    <PreferenceCategory
+        android:title="@string/category_timer_type">"
+		<ListPreference
+	    	android:title="@string/timer_type"
+	    	android:summary="@string/timer_type_descr"
+	    	android:key="listPrefTimerType"
+	    	android:defaultValue="0"
+	    	android:entries="@array/lisrArray"
+	    	android:entryValues="@array/listValue"
+		/>
+		<EditTextPreference 
+		    android:inputType="number"
+		    android:title="@string/time_limit"
+		    android:summary="@string/time_limit_descr"
+		    android:key="limitTime"
+		    android:defaultValue="5"
+		/>
+	</PreferenceCategory>
 </PreferenceScreen>

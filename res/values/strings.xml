@@ -20,5 +20,14 @@
     <string name="timePref">Time settings</string>
     <string name="time">Time for game</string>
     <string name="time_descr">Input time for game in minute</string>
+    <string name="category_timer_type">Timer type and interval</string>
+    <string name="timer_type">Timer type</string>
+    <string name="time_limit">Time limit</string>
+    <string name="time_limit_descr">Input time limit in seconds</string>
+    <string name="timer_type_descr">Select timer type</string>
+    <string name="simple_timer">Simple timer</string>
+    <string name="timer_with_delay">Timer with delay(Andante)</string>
+    <string name="adagio_timer">Adagio</string>
+    <string name="fisher_timer">Fisher timer</string>
 
 </resources>

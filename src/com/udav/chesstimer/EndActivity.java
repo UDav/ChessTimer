@@ -35,8 +35,6 @@ public class EndActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.buttonAgain:
-			/*Intent intent = new Intent(getApplicationContext(), MainActivity.class); 
-			startActivity(intent);*/
 			this.finish();
 			break;
 		}

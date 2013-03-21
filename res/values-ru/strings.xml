@@ -20,5 +20,14 @@
     <string name="timePref">Настройки времени</string>
     <string name="time">Время на игру</string>
     <string name="time_descr">Задайте время игры в минутах</string>
+    <string name="category_timer_type">Тип таймера и добавочное время</string>
+    <string name="timer_type">Тип таймера</string>
+    <string name="time_limit">Добавочный лимит времени</string>
+    <string name="time_limit_descr">Введите добавочное время в секундах</string>
+    <string name="timer_type_descr">Выберети тип таймера</string>
+    <string name="simple_timer">Простой таймер</string>
+    <string name="timer_with_delay">Таймер с задержкой</string>
+    <string name="adagio_timer">Часы Бронштейна</string>
+    <string name="fisher_timer">Часы Фишера</string>
     
 </resources>

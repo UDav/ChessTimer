@@ -72,6 +72,7 @@ public class MyTimer {
 	
 	public void proceed(long enemyTime){
 		this.enemyTime = enemyTime; 
+		moveCounter++;
 		limit = LIMIT_TIME;
 		switch (typeTimer) {
 			case TIMER_SIMPLE:
@@ -102,6 +103,7 @@ public class MyTimer {
 				break;
 			case TIMER_FISHER:
 				timer = createTimer().start();
+				subTv.setText("");
 				break;
 		}
 		
@@ -132,6 +134,7 @@ public class MyTimer {
 				//add to milliseconds limit
 				milliseconds += LIMIT_TIME;
 				tv.setText(millisecondToTime(milliseconds));
+				subTv.setText("+"+(limit/1000)+" seconds");
 				break;
 	}
 	}
@@ -145,7 +148,6 @@ public class MyTimer {
 	}
 	
 	private CountDownTimer createTimer() {
-		moveCounter++;
 		return new CountDownTimer(milliseconds, INTERVAL) {
 			@Override
 			public void onTick(long millisUntilFinished) {

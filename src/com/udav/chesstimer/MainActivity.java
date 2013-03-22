@@ -104,7 +104,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				if (secondTimer != null) secondTimer.stop();
 				
 				if (firstTimer == null) {
-					firstTimer = new MyTimer(tvSecondPlayer, subTvSecondPlayer, gameTime, typeTimer, limitTime, secondPlName.getText().toString(), getApplicationContext());
+					firstTimer = new MyTimer(tvSecondPlayer, subTvSecondPlayer, 
+							gameTime, typeTimer, limitTime, 
+							secondPlName.getText().toString(), getApplicationContext());
 				}else
 					if (!firstTimer.getEnd()){
 						if (secondTimer != null) firstTimer.proceed(secondTimer.getTime());
@@ -119,7 +121,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				if (firstTimer != null) firstTimer.stop();
 				
 				if (secondTimer == null) {
-					secondTimer = new MyTimer(tvFirstPlayer, subTvFirstPlayer, gameTime, typeTimer, limitTime, firstPlName.getText().toString(), getApplicationContext());
+					secondTimer = new MyTimer(tvFirstPlayer, subTvFirstPlayer, 
+							gameTime, typeTimer, limitTime, 
+							firstPlName.getText().toString(), getApplicationContext());
 				}else
 					if (!secondTimer.getEnd()) {
 						if (firstTimer != null) secondTimer.proceed(firstTimer.getTime());

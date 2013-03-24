@@ -12,6 +12,15 @@
         android:text="@string/end_game_msg"
         android:textSize="15sp"
         tools:context=".EndActivity" />
+    
+    <GridView 
+        android:id="@+id/statisticGridView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="6"
+        >
+        
+    </GridView>
 
     <Button
         android:id="@+id/buttonAgain"

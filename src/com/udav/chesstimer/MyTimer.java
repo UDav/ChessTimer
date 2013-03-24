@@ -164,6 +164,11 @@ public class MyTimer {
 			public void onFinish() {
 				end = true;
 				
+				milliseconds = milliseconds - INTERVAL;
+				tv.setText(millisecondToTime(milliseconds));
+				
+				DBHelper.setDataToDB(context, "Another pl", name, moveCounter, millisecondToTime(enemyTime), millisecondToTime(milliseconds));
+				
 				String text = name+" lose!\nСделано ходов: "+moveCounter+
 				"\nОсталось времени у противника "+millisecondToTime(enemyTime);
 				Intent intent = new Intent(context, EndActivity.class);

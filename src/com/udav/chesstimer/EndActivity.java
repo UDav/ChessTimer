@@ -31,9 +31,11 @@ public class EndActivity extends Activity implements OnClickListener{
         mCursor.moveToFirst();
         
         GridView statistic = (GridView)findViewById(R.id.statisticGridView);
-        SimpleCursorAdapter sca = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, 
-        		mCursor, new String[]{"_id", "win_pl"}, 
-        		new int[]{android.R.id.text1, android.R.id.text2}, CursorAdapter.IGNORE_ITEM_VIEW_TYPE);
+        SimpleCursorAdapter sca = new SimpleCursorAdapter(this, R.layout.item_layout, 
+        		mCursor, 
+        		new String[]{"_id", "win_pl", "lose_pl", "step_count", "win_time", "lose_time"}, 
+        		new int[]{R.id.id, R.id.winPl, R.id.losePl, R.id.stepCount, R.id.winTime, R.id.loseTime}, 
+        		CursorAdapter.IGNORE_ITEM_VIEW_TYPE);
         statistic.setAdapter(sca);
         
         for (int i=0; i<mCursor.getCount(); i++){

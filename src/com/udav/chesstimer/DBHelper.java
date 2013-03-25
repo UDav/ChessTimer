@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE GameStatistic(id integer primary key autoincrement, win_pl text, " +
+		db.execSQL("CREATE TABLE GameStatistic(_id integer primary key autoincrement, win_pl text, " +
 				"lose_pl text, step_count integer, win_time text, lose_time text);");
 
 	}

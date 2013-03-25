@@ -13,12 +13,11 @@
         android:textSize="15sp"
         tools:context=".EndActivity" />
     
-    <GridView 
+    <GridView
         android:id="@+id/statisticGridView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:numColumns="6"
-        >
+        android:layout_alignParentRight="true">
         
     </GridView>
 

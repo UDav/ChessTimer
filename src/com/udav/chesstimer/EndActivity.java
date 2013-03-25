@@ -3,6 +3,7 @@ package com.udav.chesstimer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.database.Cursor;
+import android.support.v4.widget.CursorAdapter;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,9 +30,11 @@ public class EndActivity extends Activity implements OnClickListener{
         Cursor mCursor = DBHelper.getDataFromDB(getApplicationContext());
         mCursor.moveToFirst();
         
-        /*GridView statistic = (GridView)findViewById(R.id.statisticGridView);
-        SimpleCursorAdapter sca = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, mCursor, new String[]{"id"}, new int[]{android.R.id.text1});
-        statistic.setAdapter(sca);*/
+        GridView statistic = (GridView)findViewById(R.id.statisticGridView);
+        SimpleCursorAdapter sca = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, 
+        		mCursor, new String[]{"_id", "win_pl"}, 
+        		new int[]{android.R.id.text1, android.R.id.text2}, CursorAdapter.IGNORE_ITEM_VIEW_TYPE);
+        statistic.setAdapter(sca);
         
         for (int i=0; i<mCursor.getCount(); i++){
         	System.out.println(mCursor.getInt(0));

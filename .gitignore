@@ -3,3 +3,4 @@ gen/
 libs/
 assets/
 .settings/
+project.properties

@@ -1,33 +1,32 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:text="@string/end_game_msg"
         android:textSize="15sp"
         tools:context=".EndActivity" />
-    
-    <GridView
-        android:id="@+id/statisticGridView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true">
-        
-    </GridView>
 
     <Button
         android:id="@+id/buttonAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/result"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="Start again" />
 
-</RelativeLayout>
+    <GridView
+        android:id="@+id/statisticGridView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="5dp"
+        android:numColumns="6" >
+
+    </GridView>
+
+</LinearLayout>

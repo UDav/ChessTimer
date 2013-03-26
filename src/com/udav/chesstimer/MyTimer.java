@@ -55,7 +55,7 @@ public class MyTimer {
 	 * Convert milliseconds to string hh:mm:ss.ms
 	 * @return
 	 */
-	private String millisecondToTime(long timeInMillisecond) {
+	public static String millisecondToTime(long timeInMillisecond) {
 		long second = timeInMillisecond/1000;
 		long showMiliseconds = timeInMillisecond % 1000;
 		long min = second/60;

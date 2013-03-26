@@ -73,8 +73,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (secondTimer != null) secondTimer.stop();
 		firstTimer = null;
 		secondTimer = null;
-		tvFirstPlayer.setText("00:"+time+":00.0");
-		tvSecondPlayer.setText("00:"+time+":00.0");
+		
+		long milliseconds = Long.parseLong(time) * 60000; 
+		tvFirstPlayer.setText(MyTimer.millisecondToTime(milliseconds));
+		tvSecondPlayer.setText(MyTimer.millisecondToTime(milliseconds));
 		buttonFirstPlayer.setEnabled(true);
 		buttonSecondPlayer.setEnabled(true);
 		
